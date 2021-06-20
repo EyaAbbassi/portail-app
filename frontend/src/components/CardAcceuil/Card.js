@@ -1,57 +1,40 @@
-<<<<<<< HEAD
-import React , { useEffect, useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Axios from "axios";
 
 const MainContent = (props) => {
- 
- 
-  
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const [product, setproduct] = useState([]);
 
-
   const getproduct = async (type) => {
-    const res = await Axios.get("http://localhost:5000/api/products",  {headers: {Authorization: 'Bearer 73Ntx3b6SwNXC7ANV3tw4wFfDdKntB26',
-    "Access-Control-Allow-Origin": "*",
-    mode: "cors",               
-}});
-  const products = res.data; 
-  const f =products.filter(item =>{
-     {return item.type == type}
-    
-  })
-  console.log('products',f)
+    const res = await Axios.get("http://localhost:5000/api/products", {
+      headers: {
+        Authorization: "Bearer 73Ntx3b6SwNXC7ANV3tw4wFfDdKntB26",
+        "Access-Control-Allow-Origin": "*",
+        mode: "cors",
+      },
+    });
+    const products = res.data;
+    const f = products.filter((item) => {
+      {
+        return item.type == type;
+      }
+    });
+    console.log("products", f);
     setproduct(f);
-  }
+  };
 
-  
   useEffect(() => {
     if (localStorage.getItem("userInfo")) {
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       if (userInfo.healthy) getproduct("healthy");
       else if (userInfo.proteine) getproduct("protein");
       else if (userInfo.weight) getproduct("weightLoss");
-
     }
   }, []);
 
-
-
- 
- 
-   const listItems = product.map((item) => (
-=======
-import React from "react";
-import { useSelector } from "react-redux";
-
-const MainContent = (props) => {
-  const productList = useSelector((state) => state.productList);
-  const { products } = productList;
-
-  const listItems = products.map((item) => (
->>>>>>> 45b16cfdef9da7495ecff9800682be7f5d23d930
+  const listItems = product.map((item) => (
     <div className="card" key={item.id}>
       <div className="card_img">
         <img src={item.image} alt="product"></img>
@@ -69,7 +52,6 @@ const MainContent = (props) => {
   ));
   return (
     <div className="main_content" style={{ alignItems: "stretch" }}>
-      
       {listItems}
     </div>
   );

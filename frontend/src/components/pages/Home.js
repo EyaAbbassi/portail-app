@@ -5,6 +5,7 @@ import Section from "../Sections/Section";
 import Slide from "../Slide/Slide";
 import Card from "../CardAcceuil/Card";
 import AcceuilRecipes from "../Recipes/AcceuilRecipes";
+import Footer from "../Footer/Footer";
 
 function Home() {
   return (

@@ -26,10 +26,8 @@ function AcceuilRecipes() {
   }, []);
 
   return (
-    <div className="App">
-      <div className="container-acceuil">
-        <Slider recipes={recipes} />
-      </div>
+    <div className="container-acceuil">
+      <Slider recipes={recipes} />
     </div>
   );
 }
